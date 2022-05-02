@@ -102,17 +102,22 @@ public class TaskManager {
         while (scan.hasNextLine()) {
             String option = scan.nextLine();
             switch (option) {
-                case "add" : addToTasks();
+                case "add":
+                    addToTasks();
                     break;
-                case "remove" :
+                case "remove":
                     // potrrzebna wczytana tablica
                     System.out.println("Please select number to remove.");
-                    int i = scan.nextInt();
                     try {
-                        tasks = ArrayUtils.remove(tasks, i);
-                        System.out.println("Successfully deleted");
-                    } catch (IndexOutOfBoundsException e){
-                        System.out.println("Element not exist");
+                        int i = Integer.parseInt(scan.nextLine());
+                        try {
+                            tasks = ArrayUtils.remove(tasks, i);
+                            System.out.println("Successfully deleted");
+                        } catch (IndexOutOfBoundsException e) {
+                            System.out.println("Element not exist");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("You entered an invalid index. Enter the number");
                 }
                     break;
                 case "list" : showTasks();
