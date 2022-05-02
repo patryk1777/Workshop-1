@@ -116,7 +116,7 @@ public class TaskManager {
                         } catch (IndexOutOfBoundsException e) {
                             System.out.println("Element not exist");
                         }
-                    } catch (NumberFormatException e) {
+                    } catch (NumberFormatException e)
                         System.out.println("You entered an invalid index. Enter the number");
                 }
                     break;
