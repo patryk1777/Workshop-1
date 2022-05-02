@@ -26,10 +26,10 @@ public class TaskManager {
         String isImportant = scan.nextLine();
 
         tasks = Arrays.copyOf(tasks, tasks.length + 1);
-        tasks[tasks.length-1] = new String[3];
-        tasks[tasks.length-1][0] = description;
-        tasks[tasks.length-1][1] = dueDate;
-        tasks[tasks.length-1][2] = isImportant;
+        tasks[tasks.length - 1] = new String[3];
+        tasks[tasks.length - 1][0] = description;
+        tasks[tasks.length - 1][1] = dueDate;
+        tasks[tasks.length - 1][2] = isImportant;
 
 
     }
@@ -71,7 +71,7 @@ public class TaskManager {
         return tab;
     }
 
-    public static void writeToFile(String fileName, String[][] tab){
+    public static void writeToFile(String fileName, String[][] tab) {
         Path path = Paths.get(fileName);
         String[] row = new String[tasks.length];
         for (int i = 0; i < tab.length; i++) {
@@ -79,7 +79,7 @@ public class TaskManager {
         }
 
         try {
-            Files.write(path,Arrays.asList(row));
+            Files.write(path, Arrays.asList(row));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -116,18 +116,21 @@ public class TaskManager {
                         } catch (IndexOutOfBoundsException e) {
                             System.out.println("Element not exist");
                         }
-                    } catch (NumberFormatException e)
+                    } catch (NumberFormatException e) {
                         System.out.println("You entered an invalid index. Enter the number");
-                }
+                    }
+
                     break;
-                case "list" : showTasks();
+                case "list":
+                    showTasks();
                     break;
-                case "exit" :
-                    writeToFile(FILENAME,tasks);
+                case "exit":
+                    writeToFile(FILENAME, tasks);
                     System.exit(0);
-                default: System.out.println("Please select a correct option.");
+                default:
+                    System.out.println("Please select a correct option.");
             }
-           menu();
+            menu();
         }
     }
 }
